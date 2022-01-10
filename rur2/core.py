@@ -44,3 +44,8 @@ class Table:
 
     def unit_scale(self, item):
         pass
+
+def vector(data, format='%c', ndim=3, axis=-1):
+    # get n-dimensional array from given format
+    # e.g. use format='v%c' and ndim=3 for 3D velocity
+    return np.stack([data[format % dim_key] for dim_key in config.dim_keys[:ndim]], axis=axis)

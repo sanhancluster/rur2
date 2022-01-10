@@ -9,6 +9,10 @@ class HaloData(core.Table):
     def __init__(self, data: np.array):
         super().__init__(data)
         self.alias = config.alias_common
+        self.type = 'None'
 
     def extra_fields(self, item):
-
+        if(item in config.extra_fields_common.keys):
+            return config.extra_fields_common[item](self.data)
+        else:
+            return super().extra_fields(item)

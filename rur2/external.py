@@ -1,3 +1,5 @@
+# write some useful external python functions
+
 class AliasDict(dict):
     """
     A dictionary which allows aliases to be set for a value.

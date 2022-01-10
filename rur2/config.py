@@ -1,6 +1,7 @@
 import core
 import external
 
+dim_keys = ['x', 'y', 'z', 'u', 'v', 'w']
 
 unit_dimension = external.AliasDict({
     ('g', 'Msol') : (1, 0, 0),
@@ -50,11 +51,8 @@ alias_HaloMaker = core.Alias({
 alias_HaloMaker.update(alias_common)
 
 extra_fields_common = {
-    'x' : lambda table: table.data['position'][..., 0],
-    'y' : lambda table: table.data['position'][..., 1],
-    'z' : lambda table: table.data['position'][..., 2],
-    'vx' : lambda table: table.data['velocity'][..., 0],
-    'vy' : lambda table: table.data['velocity'][..., 1],
-    'vz' : lambda table: table.data['velocity'][..., 2],
+    'position' : lambda table: core.vector(table.data),
+    'velocity' : lambda table: core.vector(table.data, format='v%c'),
+    'angular_momentum' : lambda table: core.vector(table.data, format='L%c'),
 }
 
