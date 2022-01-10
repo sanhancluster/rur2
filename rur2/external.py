@@ -137,4 +137,3 @@ class AliasDict(dict):
         aliases = self.reverse_aliases.pop(key, [])
         for alias in aliases:
             self.aliases.pop(alias)
-@sanhancluster
